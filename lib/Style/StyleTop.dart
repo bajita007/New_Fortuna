@@ -26,12 +26,12 @@ class Header2 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path()
-      ..lineTo(0.0, 200.0)
+      ..lineTo(0.0, 180.0)
       ..quadraticBezierTo(
         size.width / 2,
-        170.0,
+        150.0,
         size.width,
-        85.0,
+        90.0,
       )
       ..lineTo(size.width, 0.0)
       ..close();
@@ -48,10 +48,10 @@ class Header3 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path()
-      ..lineTo(0.0, 220.0)
+      ..lineTo(0.0, 190.0)
       ..quadraticBezierTo(
         size.width / 2,
-        190.0,
+        160.0,
         size.width,
         100.0,
       )

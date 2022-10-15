@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class StyleForm {
   static InputDecoration borderInputStyle(
-      {required String title, required var prefix}) {
+      {required String title, required var prefix,  String hint =""}) {
     // Widget prefix = prefix ?? Icon(Icons.import_contacts_sharp);
 
     // Widget dataPrefix =
@@ -11,6 +11,8 @@ class StyleForm {
     return InputDecoration(
         labelText: title,
         filled: true,
+        hintText: (hint.isEmpty)? "Masukkan $title": hint,
+
 
         enabledBorder: borderPutihForm,
         errorBorder: borderMerahForm,

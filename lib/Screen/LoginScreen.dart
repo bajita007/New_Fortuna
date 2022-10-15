@@ -30,78 +30,77 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         extendBodyBehindAppBar: false,
         body: is_loading
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : SingleChildScrollView(
-                child: SizedBox(
-                  height: Get.height,
-                  child: Stack(
-                    children: [
-                      //Bg
-                      Container(
-                        height: Get.height,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            image: DecorationImage(
-                                image: const AssetImage(Gambar.background1),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  kMerah.withOpacity(0.1),
-                                  BlendMode.dstIn,
-                                ))),
+            : SizedBox(
+                height: Get.height,
+                child: Stack(
+                  children: [
+                    //Bg
+                    Container(
+                      height: Get.height,
+                      width: Get.width,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          image: DecorationImage(
+                              image: const AssetImage(Gambar.background1),
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                kMerah.withOpacity(0.1),
+                                BlendMode.dstIn,
+                              ))),
+                    ),
+                    ClipPath(
+                      clipper: Header3(),
+                      child: Container(
+                        color: Colors.red,
                       ),
-                      ClipPath(
-                        clipper: Header3(),
-                        child: Container(
-                          color: Colors.red,
-                        ),
+                    ),
+                    ClipPath(
+                      clipper: Header2(),
+                      child: Container(
+                        color: kMerah,
                       ),
-                      ClipPath(
-                        clipper: Header2(),
-                        child: Container(
-                          color: kMerah,
-                        ),
-                      ),
-                      SizedBox(
-                        height: Get.height,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 45),
-                                child: Image.asset(
-                                  Gambar.logo,
-                                  color: Colors.white,
-                                  fit: BoxFit.fitWidth,
-                                  width: Get.width / 1.8,
-                                ),
+                    ),
+
+                    SizedBox(
+                      height: Get.height,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 40),
+                              child: Image.asset(
+                                Gambar.logo,
+                                color: Colors.white,
+                                fit: BoxFit.fitHeight,
+                                height: 85,
                               ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              _loginForm()
-                            ],
-                          ),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            _loginForm()
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ));
   }
 
   _loginForm() {
     return Card(
-        margin: EdgeInsets.all(20),
+        margin: EdgeInsets.symmetric(horizontal: 20),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -109,12 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                FormBuilder(
+                Form(
                   key: _formKey,
-                  initialValue: {
-                    'date': DateTime.now(),
-                    'accept_terms': false,
-                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,43 +124,39 @@ class _LoginScreenState extends State<LoginScreen> {
                             letterSpacing: 1),
                       ),
                       const Divider(),
-                      const SizedBox(height: 5),
-                      FormBuilderTextField(
-                        name: 'email',
+                      TextFormField(
+                        controller: _emailController,
+                        textInputAction: TextInputAction.go,
+                        keyboardType: TextInputType.name,
                         decoration: StyleForm.borderInputStyle(
-                            title: "Email",
-                            prefix: const Icon(
-                              Icons.email_rounded,
-                            )),
-
-                        // valueTransformer: (text) => num.tryParse(text),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(),
-                        ]),
-
-                        // initialValue: '12',
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
+                          title: "Email",
+                          prefix: const Icon(
+                            Icons.password,
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Harap Memasukkan Email Dengan Benar';
+                          }
+                          return null;
+                        },
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      FormBuilderTextField(
-                        name: 'pass',
+                      const SizedBox(height: 10),
+                      TextFormField(
+                        controller: _passwordController,
+                        textInputAction: TextInputAction.go,
+                        keyboardType: TextInputType.visiblePassword,
                         decoration: StyleForm.borderInputStyle(
                             title: "Password",
                             prefix: const Icon(
                               Icons.password,
                             )),
-
-                        // valueTransformer: (text) => num.tryParse(text),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(),
-                        ]),
-
-                        // initialValue: '12',
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Harap Memasukkan Password';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 10),
                       SizedBox(
@@ -175,8 +166,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               navigator: () {
                                 // StyleLoading(context);
                                 if (_formKey.currentState!.validate()) {
+                                  print("object");
                                 } else {
-                                  Navigator.of(context).pop();
+                                  return Navigator.of(context).pop();
                                 }
                               },
                               title: "Masuk")),
