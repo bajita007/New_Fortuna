@@ -16,43 +16,62 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+
           width: Get.width,
-          padding: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
+          padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
           color: kMerah,
           child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
                 Gambar.logo,
                 color: Colors.white,
-                height: 80,
+                height: 50,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:  [
-                  const Expanded(
-                      flex: 1,
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const CircleAvatar(
+                      radius: 35,
+                      backgroundColor: Colors.white,
                       child: CircleAvatar(
-                        radius: 60,
+                        radius: 30,
                         backgroundColor: Colors.white,
-
-                        child: CircleAvatar(
-                          radius: 55,
-                          backgroundColor: Colors.white,
-                          backgroundImage: AssetImage(Gambar.logo),
-                        ),
+                        backgroundImage: AssetImage(Gambar.icons_profile),
                       ),
-                  ),
-                  Expanded(
-                      flex: 3,
-                      child: Column(
-                        children: const [
-                          Text("Saldo Dompet"),
-                        ],
-                      )
-
-                  ),
-                ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Text(
+                          "Saldo Dompet",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 14, color: Colors.white),
+                        ),
+                        SizedBox(height: 5,),
+                        Text(
+                          "Rp.1.000.000",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               )
             ],
           ),
