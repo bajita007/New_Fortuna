@@ -38,18 +38,26 @@ class _BerandaPageState extends State<BerandaPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    Text("Hello", style: TextStyle(color: Colors.white),),
+                    Text(
+                      "Hello",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     Text(
                       "Nama Pengguna",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
                     ),
 
                     Divider(
                       height: 20,
                       color: Colors.white,
                     ),
-                    Text("Penghasilan Harian", style: TextStyle(color: Colors.white),),
+                    Text(
+                      "Penghasilan Harian",
+                      style: TextStyle(color: Colors.white),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
@@ -57,20 +65,27 @@ class _BerandaPageState extends State<BerandaPage> {
                     //Nominal
                     Text(
                       "Rp.1.000.000",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600 ,color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
                     ),
 
                     SizedBox(
                       height: 5,
                     ),
                     Text.rich(TextSpan(children: [
-                      TextSpan(text: "Dari ", style: TextStyle(color: Colors.white)),
+                      TextSpan(
+                          text: "Dari ", style: TextStyle(color: Colors.white)),
                       //Paket aktif
                       TextSpan(
-                          text: "2",
-                          style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),),
-                      TextSpan(text: " Paket Investasi", style: TextStyle(color: Colors.white)),
+                        text: "2",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, color: Colors.white),
+                      ),
+                      TextSpan(
+                          text: " Paket Investasi",
+                          style: TextStyle(color: Colors.white)),
                     ]))
                   ],
                 ),
@@ -101,7 +116,7 @@ class _BerandaPageState extends State<BerandaPage> {
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                itemCount: dataInvest.length,
+                itemCount: (dataInvest.length >= 3) ? 3 : dataInvest.length,
                 itemBuilder: (context, index) {
                   return ListInvestasi(mInvestasi: dataInvest[index]);
                 }),

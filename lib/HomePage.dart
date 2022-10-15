@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fortuna/page/BerandaPage.dart';
+import 'package:fortuna/page/InvestasiPage.dart';
+import 'package:fortuna/page/ProfilePage.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -15,9 +17,10 @@ class _HomePageState extends State<HomePage> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static  final List<Widget> _widgetOptions = <Widget>[
     const BerandaPage(),
+    const InvestasiPage(),
+
     Container(),
-    Container(),
-    Container(),
+    const ProfilePage(),
 
   ];
 
