@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _loginForm() {
     return Card(
-        margin: EdgeInsets.all( 20),
+        margin: EdgeInsets.all(20),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -166,9 +166,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               navigator: () {
                                 StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
-                                  Get.removeRoute();
+                                  Get.toNamed(AppRoutes.home);
                                 } else {
-                                 Get.back();                             }
+                                  Get.back();
+                                }
                               },
                               title: "Masuk")),
                       const SizedBox(height: 10),

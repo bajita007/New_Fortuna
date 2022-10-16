@@ -16,9 +16,9 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-
           width: Get.width,
-          padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
+          padding:
+              const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
           color: kMerah,
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -62,11 +62,16 @@ class _ProfilePageState extends State<ProfilePage> {
                           textAlign: TextAlign.start,
                           style: TextStyle(fontSize: 14, color: Colors.white),
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           "Rp.1.000.000",
                           textAlign: TextAlign.start,
-                          style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
