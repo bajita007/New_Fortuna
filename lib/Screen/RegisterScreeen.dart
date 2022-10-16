@@ -22,7 +22,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
   final TextEditingController nikController = TextEditingController();
   final TextEditingController namaController = TextEditingController();
@@ -218,8 +218,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               navigator: () {
                                 StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
+                                  print("object");
                                 } else {
-                                  Navigator.of(context).pop();
+                                  Get.back();
                                 }
                               },
                               title: "Daftar")),

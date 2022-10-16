@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _loginForm() {
     return Card(
-        margin: EdgeInsets.symmetric(horizontal: 20),
+        margin: EdgeInsets.all( 20),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: StyleForm.borderInputStyle(
                           title: "Email",
                           prefix: const Icon(
-                            Icons.password,
+                            Icons.mail,
                           ),
                         ),
                         validator: (value) {
@@ -164,12 +164,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: StyleButton(
                               context: context,
                               navigator: () {
-                                // StyleLoading(context);
+                                StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
                                   print("object");
                                 } else {
-                                  return Navigator.of(context).pop();
-                                }
+                                 Get.back();                             }
                               },
                               title: "Masuk")),
                       const SizedBox(height: 10),
