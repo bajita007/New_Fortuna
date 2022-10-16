@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               navigator: () {
                                 StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
-                                  print("object");
+                                  Get.removeRoute();
                                 } else {
                                  Get.back();                             }
                               },
