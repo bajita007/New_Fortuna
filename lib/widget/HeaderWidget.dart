@@ -6,7 +6,6 @@ AppBar headerWidget() {
   return AppBar(
     backgroundColor: Colors.white,
     centerTitle: false,
-    // iconTheme: const IconThemeData(color: Colors.black87),
     title: Image.asset(Gambar.logo, height: 45,),
     elevation: 2.0,
   );

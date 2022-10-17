@@ -14,6 +14,8 @@ dependencies:
   form_builder_validators: ^8.3.0
   get: ^4.6.5
   intl: ^0.17.0
+  font_awesome_flutter: ^10.2.1
+
 
 dev_dependencies:
   flutter_test:

@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               image: const AssetImage(Gambar.background1),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(
-                                kMerah.withOpacity(0.1),
+                                kMerah.withOpacity(0.5),
                                 BlendMode.dstIn,
                               ))),
                     ),
@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               navigator: () {
                                 StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
-                                  Get.toNamed(AppRoutes.home);
+                                  Get.offAllNamed(AppRoutes.home);
                                 } else {
                                   Get.back();
                                 }

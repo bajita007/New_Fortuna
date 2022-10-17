@@ -56,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         image: const AssetImage(Gambar.background1),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
-                          kMerah.withOpacity(0.1),
+                          kMerah.withOpacity(0.5),
                           BlendMode.dstIn,
                         ))),
               ),

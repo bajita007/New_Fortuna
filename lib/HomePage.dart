@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   static  final List<Widget> _widgetOptions = <Widget>[
     const BerandaPage(),
     const InvestasiPage(),
-
+    Container(),
     Container(),
     const ProfilePage(),
 
@@ -43,12 +43,16 @@ class _HomePageState extends State<HomePage> {
               label: 'Beranda',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
+              icon: Icon(Icons.comment_bank_sharp),
+              label: 'Investasi',
+              backgroundColor: Colors.white),
+          BottomNavigationBarItem(
               icon: Icon(Icons.list),
               label: 'Riwayat',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
-              icon: Icon(Icons.comment_bank_sharp),
-              label: 'Bank',
+              icon: Icon(Icons.supervised_user_circle_sharp),
+              label: 'Team',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_circle_rounded),

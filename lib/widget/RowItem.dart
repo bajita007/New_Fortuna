@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Row RowItem(String title, String value) {
+Row RowItem({required String title, required String value, double font = 12}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -8,14 +8,14 @@ Row RowItem(String title, String value) {
     children: [
       Text(
         title,
-        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        style: TextStyle(fontSize: font, fontWeight: FontWeight.w500),
         textAlign: TextAlign.start,
       ),
       Expanded(
           flex: 3,
           child: Text(
             value,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: font, fontWeight: FontWeight.w500),
             textAlign: TextAlign.end,
           ))
     ],
