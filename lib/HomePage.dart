@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fortuna/page/BerandaPage.dart';
 import 'package:fortuna/page/InvestasiPage.dart';
 import 'package:fortuna/page/ProfilePage.dart';
+import 'package:fortuna/page/RiwayatPage.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   static  final List<Widget> _widgetOptions = <Widget>[
     const BerandaPage(),
     const InvestasiPage(),
-    Container(),
+    RiwayatPage(),
     Container(),
     const ProfilePage(),
 
