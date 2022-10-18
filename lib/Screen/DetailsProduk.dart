@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fortuna/Style/StyleButton.dart';
 import 'package:fortuna/ui/app_colors.dart';
 import 'package:fortuna/widget/RowItem.dart';
@@ -15,6 +16,8 @@ class DetailsProduk extends StatefulWidget {
 
 class _DetailsProdukState extends State<DetailsProduk> {
   final mtipeinvest modelInvest = Get.arguments;
+
+  int totalQuantity = 1;
   @override
   void initState() {
     super.initState();
@@ -117,13 +120,90 @@ class _DetailsProdukState extends State<DetailsProduk> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
-              children: const [
-                Text(
-                  "Jumlah Pembelian",
-                  style: TextStyle(fontSize: 16),
-                )
-              ],
-            ),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Jumlah Pembelian",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  const Expanded(child: SizedBox()),
+                  SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if(totalQuantity > 1){
+                            setState(() {
+
+                              totalQuantity--;
+
+                            });
+                          }
+
+
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: const BorderSide(color: kMerah, width: 3)),
+                          primary: Colors.white,
+                          padding: const EdgeInsets.only(bottom: 3),
+
+                        ),
+                        child: const Text(
+                          "-",
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: kMerah),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                   SizedBox(
+                    width: 50,
+                    child: Text(
+                      totalQuantity.toString(),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: kMerah),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            totalQuantity++;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: const BorderSide(color: kMerah, width: 3)),
+                          primary: Colors.white,
+                          padding: const EdgeInsets.only(bottom: 3),
+
+                        ),
+                        child: const Text(
+                          "+",
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: kMerah),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
             const Divider(
               height: 30,
               thickness: 2,

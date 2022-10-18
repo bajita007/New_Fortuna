@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fortuna/Style/StyleButton.dart';
 import 'package:fortuna/ui/app_assets.dart';
 import 'package:fortuna/ui/app_colors.dart';
+import 'package:fortuna/ui/app_routes.dart';
 import 'package:fortuna/widget/ButtonHeaderProfile.dart';
 import 'package:get/get.dart';
 
@@ -62,9 +63,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
-                        children: const [
+                        children:  const [
                           Text(
-                            "Saldo Dompet",
+                            "Saldo Utama",
                             textAlign: TextAlign.start,
                             style: TextStyle(fontSize: 14, color: Colors.white),
                           ),
@@ -78,7 +79,22 @@ class _ProfilePageState extends State<ProfilePage> {
                                 fontSize: 18,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600),
+
+
                           ),
+                          SizedBox(height: 5,),
+                          Text.rich(TextSpan(children: [
+                              TextSpan(
+                              text: "Saldo Tertahan ", style: TextStyle(color: Colors.white)),
+                            //Paket aktif
+                            TextSpan(
+                              text: "RP. 1.200.000",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, color: Colors.white),
+                            ),])),
+
+
+
                         ],
                       ),
                     ],
@@ -92,12 +108,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     Expanded(
 
-                        child: StyleButtonIcons(context: context, navigator: (){},
+                        child: StyleButtonIcons(context: context, navigator: (){
+                          Get.toNamed(AppRoutes.topup);
+                        },
                             title: "Tambah Dana", icons: Icons.account_balance_wallet)),
-                    SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     Expanded(
                         child: StyleButtonIcons(context: context, navigator: (){},
                             title: "Tarik Dana", icons: Icons.upload_outlined)),
+
                   ],
                 )
               ],
@@ -122,6 +141,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     context: context,
                     iconPath: Icons.supervised_user_circle_outlined,
                     title: "Ajak Teman",
+                    onTap: () {},
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  ButtonProfile(
+                    context: context,
+                    iconPath: Icons.card_giftcard,
+                    title: "Reedem Code",
                     onTap: () {},
                   ),
                   const SizedBox(

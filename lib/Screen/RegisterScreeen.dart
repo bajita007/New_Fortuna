@@ -154,9 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             prefix: const Icon(
                               Icons.email_rounded,
                             )),
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(),
-                        ]),
+
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                       ),

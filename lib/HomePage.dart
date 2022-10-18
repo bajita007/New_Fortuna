@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.share)),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -66,8 +67,10 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         backgroundColor: Colors.white,
         selectedItemColor: Colors.red,
+        
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
+        
       ),
     );
   }

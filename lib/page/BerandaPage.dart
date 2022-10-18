@@ -55,7 +55,7 @@ class _BerandaPageState extends State<BerandaPage> {
                       color: Colors.white,
                     ),
                     Text(
-                      "Penghasilan Harian",
+                      "Penghasilan Hari Ini",
                       style: TextStyle(color: Colors.white),
                     ),
                     SizedBox(
