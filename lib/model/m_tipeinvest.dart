@@ -12,6 +12,8 @@ class mtipeinvest {
   final String persenadmin;
   final String biayaadmin;
   final String biayawd;
+  final String limited;
+  final String totalLimit;
 
   mtipeinvest({
     required this.id,
@@ -25,6 +27,8 @@ class mtipeinvest {
     required this.persenadmin,
     required this.biayaadmin,
     required this.biayawd,
+    required this.limited,
+    required this.totalLimit,
   });
 
   factory mtipeinvest.fromJson(Map<String, dynamic> json) {
@@ -40,6 +44,8 @@ class mtipeinvest {
       persenadmin: json['persenadmin'] ?? "",
       biayaadmin: json['biayaadmin'] ?? "",
       biayawd: json['biayawd'] ?? "",
+      limited: json['limited'] ?? "",
+      totalLimit: json['totalLimit'] ?? "",
     );
   }
 }
@@ -56,6 +62,8 @@ class mtipeinvest {
       lamapenarikan: "lamapenarikan",
       persenadmin: "persenadmin",
       biayaadmin: "biayaadmin",
+       limited: "true",
+       totalLimit: "5",
       biayawd: ""),
    mtipeinvest(
        id: 1,
@@ -68,6 +76,8 @@ class mtipeinvest {
        lamapenarikan: "lamapenarikan",
        persenadmin: "persenadmin",
        biayaadmin: "biayaadmin",
+       limited: "true",
+       totalLimit: "1",
        biayawd: ""),
    mtipeinvest(
        id: 2,
@@ -80,6 +90,8 @@ class mtipeinvest {
        lamapenarikan: "lamapenarikan",
        persenadmin: "persenadmin",
        biayaadmin: "biayaadmin",
+       limited: "true",
+       totalLimit: "2",
        biayawd: ""),
     mtipeinvest(
         id: 3,
@@ -92,6 +104,8 @@ class mtipeinvest {
         lamapenarikan: "lamapenarikan",
         persenadmin: "persenadmin",
         biayaadmin: "biayaadmin",
+        limited: "true",
+        totalLimit: "5",
         biayawd: ""),
     mtipeinvest(
         id: 4,
@@ -104,5 +118,7 @@ class mtipeinvest {
         lamapenarikan: "lamapenarikan",
         persenadmin: "persenadmin",
         biayaadmin: "biayaadmin",
+        limited: "true",
+        totalLimit: "5",
         biayawd: ""),
 ];

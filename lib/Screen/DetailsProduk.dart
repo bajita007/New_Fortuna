@@ -71,29 +71,37 @@ class _DetailsProdukState extends State<DetailsProduk> {
                         ),
                         Divider(),
                         RowItem(
+                            title: "Nama Produk",
+                            value: modelInvest.paket,
+                            font: 16),
+                        const SizedBox(
+                          height: 10,
+                        ),
+
+                        RowItem(
                             title: "Penghasilan Harian",
                             value: "value",
                             font: 16),
                         const SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         RowItem(
                             title: "Siklus Investasi",
                             value: "value",
                             font: 16),
                         const SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         RowItem(title: "Harga", value: "value", font: 16),
                         const SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         RowItem(
                             title: "Total Pendapatan",
                             value: "value",
                             font: 16),
                         const SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                       ],
                     ),
@@ -134,7 +142,7 @@ class _DetailsProdukState extends State<DetailsProduk> {
                     child: Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          if(totalQuantity > 1){
+                          if(totalQuantity > 1 ){
                             setState(() {
 
                               totalQuantity--;
@@ -180,9 +188,13 @@ class _DetailsProdukState extends State<DetailsProduk> {
                     child: Center(
                       child: ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            totalQuantity++;
-                          });
+                          print(modelInvest.totalLimit.toString());
+                          if (totalQuantity !=
+                              int.parse(modelInvest.totalLimit.toString())) {
+                            setState(() {
+                              totalQuantity++;
+                            });
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
