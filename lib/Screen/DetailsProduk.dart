@@ -119,139 +119,137 @@ class _DetailsProdukState extends State<DetailsProduk> {
     );
   }
 
-  Flexible BottomBar() {
-    return Flexible(
-      child: Container(
-        color: Colors.white,
-        padding: EdgeInsets.all(15),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Jumlah Pembelian",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  const Expanded(child: SizedBox()),
-                  SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if(totalQuantity > 1 ){
-                            setState(() {
-
-                              totalQuantity--;
-
-                            });
-                          }
-
-
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                              side: const BorderSide(color: kMerah, width: 3)),
-                          primary: Colors.white,
-                          padding: const EdgeInsets.only(bottom: 3),
-
-                        ),
-                        child: const Text(
-                          "-",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: kMerah),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                   SizedBox(
-                    width: 50,
-                    child: Text(
-                      totalQuantity.toString(),
-                      style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: kMerah),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 40,
-                    height: 40,
-                    child: Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          print(modelInvest.totalLimit.toString());
-                          if (totalQuantity !=
-                              int.parse(modelInvest.totalLimit.toString())) {
-                            setState(() {
-                              totalQuantity++;
-                            });
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                              side: const BorderSide(color: kMerah, width: 3)),
-                          primary: Colors.white,
-                          padding: const EdgeInsets.only(bottom: 3),
-
-                        ),
-                        child: const Text(
-                          "+",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: kMerah),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                ]),
-            const Divider(
-              height: 30,
-              thickness: 2,
-            ),
-            Row(
+  Container BottomBar() {
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.all(15),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
-                      Text(
-                        "Pembayaran",
+                const Text(
+                  "Jumlah Pembelian",
+                  style: TextStyle(fontSize: 16),
+                ),
+                const Expanded(child: SizedBox()),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if(totalQuantity > 1 ){
+                          setState(() {
+
+                            totalQuantity--;
+
+                          });
+                        }
+
+
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: const BorderSide(color: kMerah, width: 3)),
+                        primary: Colors.white,
+                        padding: const EdgeInsets.only(bottom: 3),
+
+                      ),
+                      child: const Text(
+                        "-",
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 24,
                             fontWeight: FontWeight.bold,
                             color: kMerah),
+                        textAlign: TextAlign.center,
                       ),
-                      Text(
-                        "Rp.100.000",
-                        style: TextStyle(fontSize: 18),
-                      )
-                    ],
+                    ),
                   ),
                 ),
-                Expanded(
-                    child: StyleButton(
-                        context: context,
-                        navigator: () {},
-                        title: "Beli Sekarang")),
-              ],
-            )
-          ],
-        ),
+                 SizedBox(
+                  width: 50,
+                  child: Text(
+                    totalQuantity.toString(),
+                    style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: kMerah),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print(modelInvest.totalLimit.toString());
+                        if (totalQuantity !=
+                            int.parse(modelInvest.totalLimit.toString())) {
+                          setState(() {
+                            totalQuantity++;
+                          });
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: const BorderSide(color: kMerah, width: 3)),
+                        primary: Colors.white,
+                        padding: const EdgeInsets.only(bottom: 3),
+
+                      ),
+                      child: const Text(
+                        "+",
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: kMerah),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+          const Divider(
+            height: 30,
+            thickness: 2,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    Text(
+                      "Pembayaran",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: kMerah),
+                    ),
+                    Text(
+                      "Rp.100.000",
+                      style: TextStyle(fontSize: 18),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                  child: StyleButton(
+                      context: context,
+                      navigator: () {},
+                      title: "Beli Sekarang")),
+            ],
+          )
+        ],
       ),
     );
   }

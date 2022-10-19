@@ -114,7 +114,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: "Tambah Dana", icons: Icons.account_balance_wallet)),
                     const SizedBox(width: 10,),
                     Expanded(
-                        child: StyleButtonIcons(context: context, navigator: (){},
+                        child: StyleButtonIcons(context: context, navigator: (){
+                          Get.toNamed(AppRoutes.withdraw);
+
+                        },
                             title: "Tarik Dana", icons: Icons.upload_outlined)),
 
                   ],

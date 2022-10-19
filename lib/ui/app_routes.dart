@@ -1,6 +1,7 @@
 import 'package:fortuna/Screen/Deposit/DepositScreen.dart';
 import 'package:fortuna/Screen/DetailsProduk.dart';
 import 'package:fortuna/Screen/LoginScreen.dart';
+import 'package:fortuna/Screen/Withdraw/WithdrawScreen.dart';
 import 'package:fortuna/model/m_tipeinvest.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,7 @@ class AppRoutes {
   static const daftar = '/daftar';
   static const produk = '/detail-produk';
   static const topup = '/topup';
+  static const withdraw = '/withdraw';
 
   static final routes = [
     GetPage(
@@ -35,6 +37,10 @@ class AppRoutes {
     GetPage(
         name: topup,
         page: () =>  DepositScreen(),
+    ),
+    GetPage(
+      name: withdraw,
+      page: () =>  WithdrawScreen(),
     ),
   ];
 }
