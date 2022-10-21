@@ -84,8 +84,8 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                             initialValue: "",
                             keyboardType: TextInputType.text,
                             validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(errorText: "Masukkan Tipe Rekening/Bank"),
-
+                              FormBuilderValidators.required(
+                                  errorText: "Masukkan Tipe Rekening/Bank"),
                             ]),
                             decoration: StyleForm.borderInputStyle(
                               title: "Bank",
@@ -103,8 +103,8 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                             initialValue: "0",
                             keyboardType: TextInputType.number,
                             validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(errorText: "Masukkan Nomor Rekening"),
-
+                              FormBuilderValidators.required(
+                                  errorText: "Masukkan Nomor Rekening"),
                             ]),
                             decoration: StyleForm.borderInputStyle(
                               title: "Nomor Rekening",
@@ -122,8 +122,8 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
                             initialValue: "0",
                             keyboardType: TextInputType.number,
                             validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(errorText: "Masukkan Nama Pemilik Rekening"),
-
+                              FormBuilderValidators.required(
+                                  errorText: "Masukkan Nama Pemilik Rekening"),
                             ]),
                             decoration: StyleForm.borderInputStyle(
                               title: "Nama Pemilik Rekening",
@@ -170,60 +170,6 @@ class _WithdrawScreenState extends State<WithdrawScreen> {
             ),
           ),
 
-          Align(
-            alignment: FractionalOffset.bottomCenter,
-
-            child: Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(15),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "Jumlah Penarikan",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: kMerah),
-                            ),
-                            Text(
-                              "Rp.100.000",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            Divider(height: 5,),
-                            Text(
-                              "Biaya Penanganan",
-                              style: TextStyle(fontSize: 12, color: kMerah, fontWeight: FontWeight.bold),
-
-                            ),
-                            Text(
-                              "Rp.5.000",
-                              style: TextStyle(fontSize: 12, ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                          child: StyleButton(
-                              context: context,
-                              navigator: () {},
-                              title: "Withdraw")),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );
