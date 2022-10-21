@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fortuna/widget/HeaderWidget.dart';
+import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentWebView extends StatefulWidget {
@@ -17,7 +18,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController _con;
-  String idOrder = '"c8c79461-869b-40df-9901-7efb3917e879"';
+  String idOrder = Get.arguments;
   String st1 = '''
   <!DOCTYPE html>
  <html>
@@ -30,9 +31,9 @@ class _PaymentWebViewState extends State<PaymentWebView> {
   <body>
     
     <script type="text/javascript">
-    snap.pay(''';
+    snap.pay("''';
 
-  String st3 = ''' ) </script>
+  String st3 = ''' ") </script>
   </body>
 </html>''';
 

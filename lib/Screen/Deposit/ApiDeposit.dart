@@ -27,11 +27,14 @@ class ApiDeposit {
       headers: headers,
       body: msg,
     );
-    if (response.statusCode == 200) {
-     var a = jsonDecode(response.body);
+    var a = jsonDecode(response.body);
+    print(a);
+    var token = a['data']['token'];
 
-      return a['data']['token'];
+    if (response.statusCode == 200 && token != null) {
+      return token;
     } else {
+      print("GAGALS");
       return "";
     }
   }

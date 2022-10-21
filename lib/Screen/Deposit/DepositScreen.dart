@@ -162,7 +162,7 @@ class _DepositScreenState extends State<DepositScreen> {
         id_user: "1",
         nominal: nominal.toString(),
         nama: "Awal").then((value){
-          print(value.toString());
+          print("${value}HASILS");
           if(value.isEmpty){
 
           }else{
