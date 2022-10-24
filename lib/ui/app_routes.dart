@@ -2,8 +2,8 @@ import 'package:fortuna/Screen/BiodataPage.dart';
 import 'package:fortuna/Screen/Deposit/DepositScreen.dart';
 import 'package:fortuna/Screen/DetailsProduk.dart';
 import 'package:fortuna/Screen/LoginScreen.dart';
+import 'package:fortuna/Screen/ProdukAktifPage.dart';
 import 'package:fortuna/Screen/Withdraw/WithdrawScreen.dart';
-import 'package:fortuna/model/m_tipeinvest.dart';
 import 'package:get/get.dart';
 
 import '../HomePage.dart';
@@ -19,6 +19,7 @@ class AppRoutes {
   static const withdraw = '/withdraw';
   static const biodata = '/biodata';
   static const webPay = '/webPay';
+  static const produkSaya = '/produk-saya';
 
   static final routes = [
     GetPage(
@@ -36,7 +37,6 @@ class AppRoutes {
     GetPage(
       name: produk,
       page: () =>  DetailsProduk(),
-      arguments: mtipeinvest
     ),
     GetPage(
         name: topup,
@@ -47,8 +47,16 @@ class AppRoutes {
       page: () =>  WithdrawScreen(),
     ),
     GetPage(
+      name: biodata,
+      page: () =>  BiodataPage(),
+    ),
+    GetPage(
       name: webPay,
       page: () =>  PaymentWebView(),
+    ),
+    GetPage(
+      name: produkSaya,
+      page: () =>  ProdukAktifPage(),
     ),
   ];
 }

@@ -6,7 +6,9 @@ import 'package:fortuna/Style/StyleTop.dart';
 import 'package:fortuna/Style/StyleLoading.dart';
 import 'package:fortuna/ui/app_routes.dart';
 import 'package:get/get.dart';
+import '../Controller/UsersApi.dart';
 import '../Style/StyleForm.dart';
+import '../model/mUser.dart';
 import '../ui/app_assets.dart';
 import '../ui/app_colors.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -163,10 +165,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: MediaQuery.of(context).size.width,
                           child: StyleButton(
                               context: context,
-                              navigator: () {
+                              navigator: () async {
                                 StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
-                                  Get.offAllNamed(AppRoutes.home);
+                                  MUser mUser=   MUser(
+                                    email: _emailController.text.toString(),
+                                    password: _passwordController.text.toString(),
+                                  );
+                                  ApiUser().UserLogin(context: context, mUser: mUser);
+
+                                  // print(mUser.toJson());
                                 } else {
                                   Get.back();
                                 }

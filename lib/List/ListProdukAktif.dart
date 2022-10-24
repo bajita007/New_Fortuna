@@ -1,31 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:fortuna/Controller/ProductApi.dart';
-import 'package:fortuna/model/mProduct.dart';
-import 'package:fortuna/ui/app_assets.dart';
-import 'package:fortuna/ui/app_routes.dart';
-import 'package:fortuna/widget/RowItem.dart';
-import 'package:get/get.dart';
+import 'package:fortuna/model/mProdukAktif.dart';
 import 'package:intl/intl.dart';
 
-class ListInvestasi extends StatelessWidget {
-  MProduct mInvestasi;
-  ListInvestasi({Key? key, required this.mInvestasi}) : super(key: key);
+import '../Controller/ProductApi.dart';
+import '../ui/app_assets.dart';
+import '../widget/RowItem.dart';
+
+class ListProdukAktif extends StatelessWidget {
+  MProdukAktif model;
+  ListProdukAktif({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(model.biayawd.toString() + "GAMBAR");
     final formatter =
         NumberFormat.simpleCurrency(locale: "id_ID", decimalDigits: 0);
-
     return InkWell(
-      onTap: () {
-        Get.toNamed(AppRoutes.produk, arguments: mInvestasi);
-      },
+      onTap: () {},
       child: Card(
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: SizedBox(
           height: 125,
           child: Row(
@@ -34,20 +30,20 @@ class ListInvestasi extends StatelessWidget {
             children: [
               Container(
                   color: const Color.fromRGBO(45, 45, 45, 1),
-                  child:
-                      (mInvestasi.biayawd!.isEmpty || mInvestasi.biayawd == "")
-                          ? Image.asset(
-                              Gambar.logo,
-                              fit: BoxFit.contain,
-                              width: 125,
-                              height: 125,
-                            )
-                          : Image.network(
-                              'https://fortuna-inv.id/img/tipe/${mInvestasi.biayawd}',
-                              fit: BoxFit.cover,
-                              width: 125,
-                              height: 125,
-                            )),
+                  child: (model.biayawd!.isEmpty || model.biayawd == "")
+                      ? Image.asset(
+                          Gambar.logo,
+                          fit: BoxFit.contain,
+                          width: 125,
+                          height: 125,
+                        )
+                      : Image.network(
+                          'https://fortuna-inv.id/img/tipe/' +
+                              model.biayawd.toString(),
+                          fit: BoxFit.cover,
+                          width: 125,
+                          height: 125,
+                        )),
               Expanded(
                   child: Padding(
                 padding: const EdgeInsets.all(10),
@@ -56,7 +52,7 @@ class ListInvestasi extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${mInvestasi.paket}',
+                      '${model.nama}',
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.w600),
                     ),
@@ -64,21 +60,20 @@ class ListInvestasi extends StatelessWidget {
                     RowItem(
                         title: "Harga",
                         value: formatter
-                            .format(int.parse(mInvestasi.investasi.toString())),
+                            .format(int.parse(model.investasi.toString())),
                         fontWeight: FontWeight.bold),
 
                     RowItem(
-                        title: "Siklus",
-                        value: "${mInvestasi.lamapenarikan} Hari"),
+                        title: "Siklus", value: "${model.bungaharian} Hari"),
                     RowItem(
                         title: "Pendapatan Harian",
                         value: formatter.format(
-                            int.parse(mInvestasi.bungaperhari.toString()))),
+                            int.parse(model.rupiahbungaharian.toString()))),
                     RowItem(
                         title: "Persentase ",
                         value: ApiProduct().getDataCalculator(
-                            durasi: mInvestasi.lamapenarikanbunga.toString(),
-                            persentase: mInvestasi.persenanhari.toString()))
+                            durasi: model.penarikanbunga.toString(),
+                            persentase: model.bungaharian.toString()))
                   ],
                 ),
               )),

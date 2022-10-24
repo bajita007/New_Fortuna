@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:fortuna/Controller/SaldoApi.dart';
 import 'package:fortuna/ui/app_routes.dart';
+import 'package:fortuna/widget/NotifWidget.dart';
 import 'package:get/get.dart';
 
 import '../../Style/StyleButton.dart';
@@ -11,7 +13,6 @@ import 'package:http/http.dart' show Client;
 
 import 'ApiDeposit.dart';
 
-
 class DepositScreen extends StatefulWidget {
   const DepositScreen({Key? key}) : super(key: key);
 
@@ -20,9 +21,6 @@ class DepositScreen extends StatefulWidget {
 }
 
 class _DepositScreenState extends State<DepositScreen> {
-
-
-
   final _formKey = GlobalKey<FormState>();
   int nominal = 0;
   @override
@@ -74,7 +72,7 @@ class _DepositScreenState extends State<DepositScreen> {
                               FormBuilderValidators.min(50000,
                                   errorText: "Saldo Minimal Rp. 50.000"),
                             ]),
-                            onChanged: (a){
+                            onChanged: (a) {
                               setState(() {
                                 nominal = int.parse(a);
                               });
@@ -90,7 +88,6 @@ class _DepositScreenState extends State<DepositScreen> {
                 ),
               ),
             ),
-
           ])),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
@@ -121,7 +118,7 @@ class _DepositScreenState extends State<DepositScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children:  [
+                          children: [
                             const Text(
                               "Jumlah Dana",
                               style: TextStyle(
@@ -131,10 +128,9 @@ class _DepositScreenState extends State<DepositScreen> {
                             ),
                             Text(
                               "IDR $nominal",
-                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w800),
                             ),
-
-
                           ],
                         ),
                       ),
@@ -142,7 +138,14 @@ class _DepositScreenState extends State<DepositScreen> {
                           child: StyleButton(
                               context: context,
                               navigator: () {
-                              prosesToken();
+                                if (nominal > 49999) {
+                                  ApiSaldo().tambahSaldo(
+                                      context: context,
+                                      jumlah: nominal.toString());
+                                } else {
+                                  notif(context, "Gagal",
+                                      "Saldo Deposit Minimal Rp.50.000");
+                                }
                               },
                               title: "Tambah Dana")),
                     ],
@@ -156,19 +159,19 @@ class _DepositScreenState extends State<DepositScreen> {
     );
   }
 
-  prosesToken() async {
-    final getToken = await ApiDeposit().getToken(
-        hp: "0891212",
-        id_user: "1",
-        nominal: nominal.toString(),
-        nama: "Awal").then((value){
-          print("${value}HASILS");
-          if(value.isEmpty){
-
-          }else{
-            Get.toNamed(AppRoutes.webPay, arguments: value);
-
-          }
-    });
-  }
+  // prosesToken() async {
+  //   final getToken = await ApiDeposit().getToken(
+  //       hp: "0891212",
+  //       id_user: "1",
+  //       nominal: nominal.toString(),
+  //       nama: "Awal").then((value){
+  //         print("${value}HASILS");
+  //         if(value.isEmpty){
+  //
+  //         }else{
+  //           Get.toNamed(AppRoutes.webPay, arguments: value);
+  //
+  //         }
+  //   });
+  // }
 }

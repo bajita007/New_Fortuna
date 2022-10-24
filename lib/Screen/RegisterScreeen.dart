@@ -4,6 +4,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:fortuna/Controller/UsersApi.dart';
+import 'package:fortuna/model/mUser.dart';
 import 'package:get/get.dart';
 
 import '../Style/StyleButton.dart';
@@ -32,6 +34,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController referalController = TextEditingController();
 
   bool is_loading = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +136,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(height: 5),
                       FormBuilderTextField(
                         name: 'Nama',
+                        controller: namaController,
+
                         decoration: StyleForm.borderInputStyle(
                             title: "nama",
                             prefix: const Icon(
@@ -149,6 +154,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       FormBuilderTextField(
                         name: 'email',
+                        controller: emailController,
+
                         decoration: StyleForm.borderInputStyle(
                             title: "Email",
                             prefix: const Icon(
@@ -163,6 +170,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       FormBuilderTextField(
                         name: 'telp',
+                        controller: hpController,
+
                         decoration: StyleForm.borderInputStyle(
                             title: "No Telpon",
                             prefix: const Icon(
@@ -179,6 +188,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       FormBuilderTextField(
                         name: 'pass',
+                        controller: passController,
+
                         decoration: StyleForm.borderInputStyle(
                             title: "Password",
                             prefix: const Icon(
@@ -195,6 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(height: 10),
                       FormBuilderTextField(
                         name: 'referal',
+                        controller: referalController,
                         decoration: StyleForm.borderInputStyle(
                             title: "Kode Referal",
                             hint: "232324",
@@ -202,9 +214,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               Icons.numbers_sharp,
                             )),
 
-                        validator: FormBuilderValidators.compose([
-                          FormBuilderValidators.required(),
-                        ]),
+
                         keyboardType: TextInputType.number,
                         textInputAction: TextInputAction.next,
                       ),
@@ -216,7 +226,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               navigator: () {
                                 StyleLoadingDialog(context);
                                 if (_formKey.currentState!.validate()) {
-                                  print("object");
+
+                                MUser mUser=   MUser(
+                                      email: emailController.text.toString(),
+                                      nama: namaController.text.toString(),
+                                      nomor: hpController.text.toString(),
+                                      password: passController.text.toString(),
+                                    );
+
+                                // print(mUser.toJson());
+                                ApiUser().UserRegister(context: context, mUser: mUser);
+
+
                                 } else {
                                   Get.back();
                                 }

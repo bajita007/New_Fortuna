@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fortuna/page/TeamPage.dart';
 import 'package:fortuna/page/BerandaPage.dart';
 import 'package:fortuna/page/InvestasiPage.dart';
 import 'package:fortuna/page/ProfilePage.dart';
 import 'package:fortuna/page/RiwayatPage.dart';
+
+import 'model/mUser.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -13,14 +16,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static  final List<Widget> _widgetOptions = <Widget>[
+    final List<Widget> _widgetOptions = <Widget>[
     const BerandaPage(),
     const InvestasiPage(),
-    RiwayatPage(),
-    Container(),
+    const RiwayatPage(),
+    const TeamPage(),
     const ProfilePage(),
 
   ];
@@ -33,8 +39,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.share)),
+      // floatingActionButton: FloatingActionButton(onPressed: (){}, child: Icon(Icons.share)),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
